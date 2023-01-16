@@ -55,7 +55,17 @@ const words = [
 let randomWord;
 let score = 0;
 let time = 10;
+//save difficulty in local storage
+let difficulty =
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
 
+//set difficulty select value
+difficultySelect.value =
+  localStorage.getItem("difficulty") !== null
+    ? localStorage.getItem("difficulty")
+    : "medium";
 //focus on text to start
 text.focus();
 
@@ -90,7 +100,6 @@ function updateScore() {
   scoreEl.innerHTML = score;
 }
 //take input text
-
 text.addEventListener("input", (e) => {
   const inputText = e.target.value;
   //check to see if input text is equal to the word
@@ -102,11 +111,32 @@ text.addEventListener("input", (e) => {
 
     //clear input
     e.target.value = "";
+
+    //add time if words match
+    if (difficulty === "easy") {
+      time += 5;
+    } else if (difficulty === "medium") {
+      time += 3;
+    } else if (difficulty === "hard") {
+      time += 2;
+    }
+    updateTime();
   }
+});
+//toggling setting difficulty
+settingsBtn.addEventListener("click", () => {
+  settings.classList.toggle("hide");
+});
+
+//difficulty select
+settingsForm.addEventListener("change", (e) => {
+  difficulty = e.target.value;
+
+  localStorage.setItem("difficulty", difficulty);
+  console.log(difficulty);
 });
 
 //game over function
-
 function gameOver() {
   endgameEl.innerHTML = `
   <h1>Time ran out</h1>
