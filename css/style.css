@@ -2,10 +2,10 @@
   box-sizing: border-box;
 }
 :root {
-  --clr-one: #62929a;
-  --clr-two: #363434;
-  --clr-three: #5c5757;
-  --clr-four: #efecec;
+  --clr-one: #766b9b;
+  --clr-two: #af64cc;
+  --clr-three: #cdcdd1;
+  --clr-four: #f8f7f1;
 }
 body {
   background-color: var(--clr-three);
@@ -123,7 +123,7 @@ input {
   z-index: 1;
 }
 .reset-btn {
-  background: var(--clr-three);
+  background: var(--clr-two);
   color: #fff;
   border: none;
   padding: 0.5rem 1.2rem;
@@ -131,5 +131,5 @@ input {
   transition: 0.2s ease;
 }
 .reset-btn:hover {
-  background: var(--clr-two);
+  background: var(--clr-three);
 }

@@ -85,14 +85,25 @@ function updateTime() {
 
 //generate word
 function getRandomWord() {
+  let randomGenerate = words[Math.floor(Math.random() * words.length)];
+
+  /*if (difficultySelect.value === "Easy") {
+    return randomGenerate.filter((word) => word.length <= 5);
+  } else if (difficultySelect.value === "Medium") {
+    return randomGenerate.filter((word) => word.length <= 8);
+  } else if (difficultySelect.value === "Hard") {
+    return randomGenerate.filter((word) => word.length <= 12);
+  }*/
+
   return words[Math.floor(Math.random() * words.length)];
 }
+
 //display random word to HTML
-function addWordToDOM() {
+function displayWordHtml() {
   randomWord = getRandomWord();
   word.innerHTML = randomWord;
 }
-addWordToDOM();
+displayWordHtml();
 
 //update scores
 function updateScore() {
@@ -105,7 +116,7 @@ text.addEventListener("input", (e) => {
   //check to see if input text is equal to the word
   if (inputText === randomWord) {
     //generate random if input matches
-    addWordToDOM();
+    displayWordHtml();
     //update scores
     updateScore();
 
@@ -116,9 +127,9 @@ text.addEventListener("input", (e) => {
     if (difficulty === "easy") {
       time += 5;
     } else if (difficulty === "medium") {
-      time += 3;
+      time += 4;
     } else if (difficulty === "hard") {
-      time += 2;
+      time += 3;
     }
     updateTime();
   }
